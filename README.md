@@ -33,6 +33,11 @@ val tree = Node(
 )
 
 val sTree: Cons = PolyToSTerm(tree)
+
+case class WithOrigin(s: String, o: Origin)
+
+val wo = WithOrigin("hasOrigin", new Origin("dummy origin", 42, 42, 42, 42))
+PolyToSTerm(wo) // Cons("WithOrigin", Seq(String("hasOrigin", None)))
 ```
 
 If you pass it a value that cannot be converted to a `STerm`, it throws a type error:
